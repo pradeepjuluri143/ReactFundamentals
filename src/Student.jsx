@@ -1,4 +1,5 @@
 import "./Student.css"
+import { useState } from "react";
 
 function StudentHeader() {
     return <h1>Student Details</h1>
@@ -97,11 +98,11 @@ function StudentRecordRow(props) {
  */
 function StudentTable({ students }) {
     console.log("Re-Rendering Student Table")
-    let displayHeader = true
+    const [displayHeader, setDisplayHeader] = useState(true)
     let headerElement = <StudentTableHeader></StudentTableHeader>
     function toggleHeader() {
-        displayHeader = !displayHeader
-        alert(`display header value is ${displayHeader}`)
+        setDisplayHeader(!displayHeader)
+        alert(`display header value is from the snapshot, only post re-rendering the state updates, state is a SnapShot value at time of rendering. So we get ${displayHeader}`)
     }
 
     return (
