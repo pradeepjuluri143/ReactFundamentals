@@ -13,28 +13,27 @@ function StudentTableHeader() {
     </thead>)
 }
 
-function StudentRecordRow() {
+function StudentRecordRow(props) {
     return (
         <tr>
-            <td>1</td>
-            <td> Mamu </td>
-            <td> 25</td>
-            <td> EEE - A </td>
+            <td>{props.student.rollno}</td>
+            <td>{props.student.name} </td>
+            <td>{props.student.age}</td>
+            <td>{props.student.class}</td>
         </tr>
     )
 }
 
-function StudentTable() {
+function StudentTable({ students }) {
 
     return (
         <>
             <table>
                 <StudentTableHeader />
                 <tbody>
-                    <StudentRecordRow />
-                    <StudentRecordRow />
-                    <StudentRecordRow />
-                    <StudentRecordRow />
+                    {students.map(student => (
+                        <StudentRecordRow key={student.rollno} student={student} />
+                    ))}
 
                 </tbody>
             </table>

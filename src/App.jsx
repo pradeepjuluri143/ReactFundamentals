@@ -1,16 +1,15 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
 import './App.css'
 import { StudentTable, StudentHeader } from './Student'
 
 function App() {
-
+  let students = [{ rollno: 1, name: "Mamu", age: 25, class: "EEE-A" },
+  { rollno: 2, name: "Chachu", age: 25, class: "EEE-A" },
+  { rollno: 3, name: "Raju", age: 25, class: "EEE-B" },
+  { rollno: 4, name: "Bantu", age: 25, class: "EEE-B" }]
   return (
     <>
       <StudentHeader />
-      <StudentTable />
+      <StudentTable students={students} />
     </>
   )
 }
