@@ -53,8 +53,8 @@ function StudentRecordRow(props) {
               * Using JavaScript ternary operator (condition ? trueVal : falseVal) to dynamically 
               * render "Yes" or "No" based on the boolean prop value 'props.student.active'.
             */}
-            <td>{props.student.active ? "Yes" : "No"}</td>
-        </tr>
+            <td style={{ color: props.student.active ? "green" : "red" }}>{props.student.active ? "Yes" : "No"}</td>
+        </tr >
     )
 }
 
