@@ -68,12 +68,47 @@ function StudentRecordRow(props) {
     )
 }
 
+
+/**
+ * !!!!!!!!!!!!!!!!!!! VERY VERY IMPORTANT !!!!!!!!!!!!!!!!!!!
+ *
+ * A normal/local variable has two limitations in React:
+ *
+ * 1. Changing a local variable does NOT tell React to re-render
+ *    the component.
+ *
+ * 2. Local variables do NOT persist between renders.
+ *    Whenever React re-renders a component, the component function
+ *    runs again from the beginning and the local variables are
+ *    created again with their initial values.
+ *
+ * Therefore, if we need a value to:
+ *
+ *    - persist between re-renders, AND
+ *    - cause the UI to re-render when it changes,
+ *
+ * we should use React State.
+ *
+ * useState() provides both:
+ *
+ *    1. A value that React remembers between renders.
+ *    2. A setter function that tells React to re-render
+ *       when the value changes.
+ */
 function StudentTable({ students }) {
+    console.log("Re-Rendering Student Table")
+    let displayHeader = true
+    let headerElement = <StudentTableHeader></StudentTableHeader>
+    function toggleHeader() {
+        displayHeader = !displayHeader
+        alert(`display header value is ${displayHeader}`)
+    }
 
     return (
         <>
+            <button onClick={toggleHeader}>Click Me To Toggle Header</button>
             <table>
-                <StudentTableHeader />
+                {displayHeader ? headerElement : null}
                 {/* 
                   * EXTERNAL STYLE LINKING:
                   * External CSS styles (defined in Student.css as .student-tbody) are applied using the 'className' attribute 
