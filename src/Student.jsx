@@ -40,9 +40,19 @@ function StudentTableHeader() {
     )
 }
 
+
+
 function StudentRecordRow(props) {
+    {/*
+      * This is handler function as we are making use of props passed to component the function
+      * has to be within the component. If no props are passed it can be outside 
+      */  }
+    function studentClicked(event) {
+        alert("Student Clicked " + props.student.rollno);
+    }
+
     return (
-        <tr>
+        <tr onClick={studentClicked}>
             <td>{props.student.rollno}</td>
             <td>{props.student.name} </td>
             <td>{props.student.age}</td>
