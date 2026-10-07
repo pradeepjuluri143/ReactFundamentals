@@ -31,10 +31,17 @@ function StudentTable({ students }) {
             <table>
                 <StudentTableHeader />
                 <tbody>
+                    {/* 
+                      * KEY PROP & HTML ID RELATIONSHIP:
+                      * 1. Importance of 'key': 'key' is a special React attribute used by React's Virtual DOM 
+                      *    reconciliation engine to track list items across re-renders, enabling efficient DOM updates.
+                      * 2. Key vs HTML ID: While 'key' uses a unique data identifier (like 'student.rollno', conceptualized like a unique ID),
+                      *    React consumes 'key' internally and does NOT render it into the HTML DOM. If a physical HTML 'id' attribute 
+                      *    is needed for styling or DOM targeting, pass it explicitly to the underlying HTML element.
+                    */}
                     {students.map(student => (
                         <StudentRecordRow key={student.rollno} student={student} />
                     ))}
-
                 </tbody>
             </table>
         </>
