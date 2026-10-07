@@ -1,0 +1,9 @@
+/* External Style for Table Body */
+.student-tbody {
+    background-color: #f9f9f9;
+    font-family: inherit;
+}
+
+.student-tbody tr:nth-child(even) {
+    background-color: #efefef;
+}

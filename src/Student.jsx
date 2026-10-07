@@ -1,16 +1,42 @@
+import "./Student.css"
+
 function StudentHeader() {
     return <h1>Student Details</h1>
 }
 
+/* 
+ * SIGNIFICANCE OF STYLE IN REACT:
+ * In React, the 'style' attribute does NOT accept a raw CSS string like standard HTML (e.g., style="color: red;").
+ * Instead, it accepts a JavaScript Object (JSON format) where CSS property names are written in camelCase 
+ * (e.g., backgroundColor instead of background-color, fontSize instead of font-size).
+ */
+
+// INTERNAL STYLE OBJECT:
+// Defined as a JavaScript object in the component file and reused.
+const theadStyle = {
+    color: "red"
+};
+
 function StudentTableHeader() {
-    return (<thead>
-        <tr>
-            <th> Roll No </th>
-            <th> Name </th>
-            <th> Age </th>
-            <th> Class </th>
-        </tr>
-    </thead>)
+    return (
+        /* 
+         * INTERNAL STYLE LINKING:
+         * Linked by passing the JavaScript style object variable 'theadStyle' inside single curly braces: style={theadStyle}
+         */
+        <thead style={theadStyle}>
+            <tr>
+                {/* 
+                  * INLINE STYLE ADDITION:
+                  * Added directly to HTML element using double curly braces style={{ backgroundColor: "yellow" }}.
+                  * Outer braces {} evaluate a JS expression; inner braces {} create a JS object literal (JSON).
+                */}
+                <th style={{ backgroundColor: "yellow" }}> Roll No </th>
+                <th style={{ backgroundColor: "yellow" }}> Name </th>
+                <th style={{ backgroundColor: "yellow" }}> Age </th>
+                <th style={{ backgroundColor: "yellow" }}> Class </th>
+            </tr>
+        </thead>
+    )
 }
 
 function StudentRecordRow(props) {
@@ -30,7 +56,12 @@ function StudentTable({ students }) {
         <>
             <table>
                 <StudentTableHeader />
-                <tbody>
+                {/* 
+                  * EXTERNAL STYLE LINKING:
+                  * External CSS styles (defined in Student.css as .student-tbody) are applied using the 'className' attribute 
+                  * instead of 'class' because 'class' is a reserved keyword in JavaScript.
+                */}
+                <tbody className="student-tbody">
                     {/* 
                       * KEY PROP & HTML ID RELATIONSHIP:
                       * 1. Importance of 'key': 'key' is a special React attribute used by React's Virtual DOM 
