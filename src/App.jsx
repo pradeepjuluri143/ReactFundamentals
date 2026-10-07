@@ -3,17 +3,14 @@ import heroImg from './assets/hero.png'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import './App.css'
-import { StudentDetails, StudentHeader } from './Student'
+import { StudentTable, StudentHeader } from './Student'
 
 function App() {
 
   return (
     <>
       <StudentHeader />
-      <StudentDetails />
-      <StudentDetails />
-      <StudentDetails />
-      <StudentDetails />
+      <StudentTable />
     </>
   )
 }
